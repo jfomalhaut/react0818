@@ -1,0 +1,45 @@
+2018.08.18.화
+------------------------------------------------------------------
+
+[git]
+1. git pull origin master
+2. git add .
+3. git commit -m "message"
+4. git push origin master
+
+-------------------------------------------------------------------
+
+0. NPM 이란
+	Node Package Manager(무료)
+
+1. package.json 만들기
+	packjson이란,
+	어플리케이션의 역사.
+	1) 무엇을 설치했고, 2) 이름은 뭐고, 3) 버전은 무엇이고
+
+2. webpack에 대한 세팅(webpack.config.js)
+
+3. 시작점(entry)과 출력(output)을 만들어준다.
+	시작점 : index.js
+	출력 : index.html
+
+4. Plugin들을 깔아준다.
+	[최신문법 사용]
+		@babel/core
+		@babel/preset-env
+		@babel/preset-react
+		babel-loader
+	[웹팩]
+		webpack
+		webpack-cli
+		webpack-dev-server
+	[리엑트관련]
+		react
+		react-dom
+		react-router-dom (Navigation)
+
+5. entry, index.js에 초기 화면을 만들어준다.
+
+6. 컴포넌트(component).
+	1) class형 component (처음, 조금 어려워)
+	2) functional component (함수형 컴포넌트, Hook)
