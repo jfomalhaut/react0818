@@ -6,7 +6,7 @@ const Navigation = () => {
 		<ul>
 			<li><Link to="/">Home</Link></li>
 			<li><Link to="/main">Main</Link></li>
-			<li><Link to="/list">List</Link></li>
+			<li><Link to="/list/jisu">List</Link></li>
 		</ul>
 	);
 };

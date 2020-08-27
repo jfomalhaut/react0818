@@ -11,8 +11,8 @@ const App = () => {
 			<Navigation />
 			<Switch>
 				<Route path="/" exact={true} component={Home} />
-				<Route path="/main" component={Main}/>
-				<Route path="/list" component={List}/>
+				<Route path="/main" component={Main} />
+				<Route path="/list/:name" component={List} />
 				<Redirect path="*" to="/" />
 			</Switch>
 		</BrowserRouter>

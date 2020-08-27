@@ -1,0 +1,35 @@
+<html>
+<body>
+	<header>
+		<h1>HEADER</h1>
+		<ul>
+			<li onclick="setPage('page1')">page1</li>
+			<li onclick="setPage('page2')">page2</li>
+			<li onclick="setPage('page3')">page3</li>
+		</ul>
+	</header>
+	<div id="container">
+		<h1>page1</h1>
+	</div>
+	<script>
+
+		var container = one('#container');
+		// var page1 = one('#page1');
+		// var page2 = one('#page2');
+		// var page3 = one('#page3');
+
+		function setPage(page) {
+			container.innerHTML = `
+				<div>
+					<h1>${page} Component</h1>	
+				</div>
+			`;
+		}
+
+		function one(ele) {
+			return document.querySelector(ele);
+		}
+
+	</script>
+</body>
+</html>
