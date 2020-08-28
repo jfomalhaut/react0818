@@ -37,6 +37,18 @@
 		react
 		react-dom
 		react-router-dom (Navigation)
+	[스타일관련]
+		css-loader
+		style-loader
+		
+	packjson에 내용추가
+	"start": "webpack-dev-server --config ./webpack.config.js --mode development"
+	"babel": {
+		"presets": [
+		"@babel/preset-env",
+		"@babel/preset-react"
+		]
+	}
 
 5. entry, index.js에 초기 화면을 만들어준다.
 
