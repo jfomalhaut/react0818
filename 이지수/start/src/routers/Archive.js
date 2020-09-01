@@ -7,7 +7,7 @@ import Review from './archive/Review'
 const Archive = () => {
 
     return (
-        <BrowserRouter>
+        <>
             <h1>사업 실적</h1>
             <ArchiveNavigation />
             <Switch>
@@ -15,7 +15,7 @@ const Archive = () => {
                 <Route path='/archive/review' component={Review} />
                 <Redirect path='/archive/*' to='/archive/profit' />
             </Switch>
-        </BrowserRouter>
+        </>
     )
 }
 
