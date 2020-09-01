@@ -1,7 +1,7 @@
 import React from 'react'
 import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom'
-import Location from './Location'
-import Info from './Info'
+import Location from './company/Location'
+import Info from './company/Info'
 import CompanyNavigation from '../components/CompanyNavigation'
 
 const Company = (props) => {

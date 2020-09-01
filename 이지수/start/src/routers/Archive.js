@@ -1,14 +1,21 @@
 import React from 'react'
+import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom'
+import ArchiveNavigation from '../components/ArchiveNavigation'
+import Profit from './archive/Profit'
+import Review from './archive/Review'
 
-const Archive = ({ history: { push } }) => {
+const Archive = () => {
 
-    const changePage = (path) => {
-        push(path)
-    }
     return (
-        <div>
+        <BrowserRouter>
             <h1>사업 실적</h1>
-        </div>
+            <ArchiveNavigation />
+            <Switch>
+                <Route path='/archive/profit' component={Profit} />
+                <Route path='/archive/review' component={Review} />
+                <Redirect path='/archive/*' to='/archive/profit' />
+            </Switch>
+        </BrowserRouter>
     )
 }
 

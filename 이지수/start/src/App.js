@@ -13,6 +13,7 @@ const App = () => {
                 <Route path="/company" exact={true} component={Company} />
                 <Route path="/business" component={Business} />
                 <Route path="/archive" component={Archive} />
+                <Redirect path='/company/*' to='/company' />
             </Switch>
         </BrowserRouter>
     )
