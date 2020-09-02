@@ -8,15 +8,13 @@ const Company = (props) => {
     console.log(props)
     return (
         <>
-            <BrowserRouter>
-                <h1>회사소개</h1>
-                <CompanyNavigation />
-                <Switch>
-                    <Route path='/company/location' component={Location} />
-                    <Route path='/company/info' component={Info} />
-                    <Redirect path='/company/*' to='/company/location' />
-                </Switch>
-            </BrowserRouter>
+            <h1>회사소개</h1>
+            <CompanyNavigation />
+            <Switch>
+                <Route path='/company/location' component={Location} />
+                <Route path='/company/info' component={Info} />
+                <Redirect path='/company/*' to='/company/location' />
+            </Switch>
         </>
     )
 };
