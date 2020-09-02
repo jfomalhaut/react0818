@@ -8,9 +8,9 @@ const Home = () => {
     const [keyword, setKeyword] = useState('')
     const [keyword2, setKeyword2] = useState('합정동')
     const [total, setTotal] = useState('')
-
+    const [page, setPage] = useState(1)
     const search = () => {
-        Axios.get(`${Request_URL}?confmKey=${ConfmKey}&currentPage=1&countPerPage=10&resultType=json&keyword=${keyword2}`)
+        Axios.get(`${Request_URL}?confmKey=${ConfmKey}&currentPage=${page}&countPerPage=10&resultType=json&keyword=${keyword2}`)
             .then(res => {
                 const { data: { results: { juso, common: { totalCount } } } } = res
                 setTotal(totalCount)
@@ -23,15 +23,35 @@ const Home = () => {
         setKeyword(value)
     }
 
+    const plusPage = () => {
+        if (page >= 1) {
+            setPage(page + 1)
+            return
+        }
+    }
+    const minusPage = () => {
+        if (page > 1) {
+            setPage(page - 1)
+            return
+        }
+    }
+
     useEffect(() => {
         search()
     }, [keyword2])
+
+    useEffect(() => {
+        search()
+        console.log(page)
+    }, [page])
 
     return (
         <div className='container'>
             <input value={keyword} onChange={onChangeKeyword} />
             <button onClick={() => setKeyword2(keyword)}>검색</button>
             <h1>'{keyword2}'에 대한 검색 결과({total})개</h1>
+            <button onClick={minusPage}>〈</button>
+            <button onClick={plusPage}>〉</button>
             <ul>
                 {list.map(li =>
                     <li key={`juso${li.bdMgtSn}`}>
