@@ -9,8 +9,9 @@ const Home = () => {
     const [keyword2, setKeyword2] = useState('');
     const [total, setTotal] = useState('');
     const [page, setPage] = useState(1);
+    
     const search = () => {
-        Axios.get(`${Request_URL}?confmKey=${ConfmKey}&currentPage=${page}&countPerPage=10&resultType=json&keyword=${keyword2}`)
+        Axios.get(`${Request_URL}?confmKey=${ConfmKey}&currentPage=${page}&countPerPage=10&resultType=json&keyword=${'keyword2'}`)
             .then(res => {
                 const { data: { results: { juso, common: { totalCount } } } } = res;
                 setTotal(totalCount);
@@ -38,11 +39,14 @@ const Home = () => {
     };
 
     useEffect(() => {
-        console.log(list);
-        // if (keyword2) {
+        if (keyword2 !== '') {
             search();
-        // }
+        }
     }, [keyword2]);
+
+    useEffect(() => {
+        console.log(list);
+    }, [list]);
 
     return (
         <div className='container'>
@@ -57,8 +61,7 @@ const Home = () => {
                         <p>{li.roadAddr}</p>
                         <p>{li.jibunAddr}</p>
                     </li>
-                )
-                }
+                )}
             </ul>
         </div>
     )
