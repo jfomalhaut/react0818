@@ -6,7 +6,7 @@ const Request_URL = 'http://www.juso.go.kr/addrlink/addrLinkApi.do'
 const Home = () => {
     const [list, setList] = useState([])
     const [keyword, setKeyword] = useState('')
-    const [keyword2, setKeyword2] = useState('합정동')
+    const [keyword2, setKeyword2] = useState('')
     const [total, setTotal] = useState('')
     const [page, setPage] = useState(1)
     const search = () => {
@@ -37,13 +37,10 @@ const Home = () => {
     }
 
     useEffect(() => {
-        search()
-    }, [keyword2])
-
-    useEffect(() => {
-        search()
-        console.log(page)
-    }, [page])
+        if (keyword2) {
+            search()
+        }
+    }, [keyword2, page])
 
     return (
         <div className='container'>
