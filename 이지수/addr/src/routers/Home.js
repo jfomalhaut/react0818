@@ -39,17 +39,22 @@ const Home = () => {
 
     useEffect(() => {
         console.log(list);
-        // if (keyword2) {
+        if (keyword2) {
             search();
-        // }
-    }, [keyword2]);
+        }
+    }, [keyword2, page]);
 
     return (
         <div className='container'>
             <input value={keyword} onChange={onChangeKeyword} />
             <button onClick={() => setKeyword2(keyword)}>검색</button>
             <h1>'{keyword2}'에 대한 검색 결과({total})개</h1>
-            <button onClick={minusPage}>〈</button>
+
+            {page !== 1 ? (
+                <button onClick={minusPage}>〈</button>
+            ) : null}
+
+
             <button onClick={plusPage}>〉</button>
             <ul>
                 {list.map(li =>
