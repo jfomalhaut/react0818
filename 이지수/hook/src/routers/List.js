@@ -10,11 +10,12 @@ const listStyle = {
     width: '1000px'
 }
 
+let checkAll = false;
+
 const List = () => {
     const [list, setList] = useState([]);
 
     const onCheck = id => {
-        console.log(id)
         const newList = list.map(item => {
             if (item.id === id) {
                 return ({ ...item, check: !item.check });
@@ -22,25 +23,42 @@ const List = () => {
                 return item;
             }
         });
-        setList(newList)
+        setList(newList);
     };
 
-    const onDelet = id => {
-        const newList = list.filter(item => item.id === id)
-        console.log(newList)
+    const onDelete = id => {
+        const index = list.findIndex(item => {
+            return item.id === id
+        })
 
-    }
-
-    const onCheckAll = () => {
-
-    }
-
-    const onDeleteAll = () => {
-
+        const newList = [...list];
+        newList.splice(index, 1);
+        setList(newList);
     }
 
     const onDeleteChecked = () => {
+        const newList = list.filter(
+            li => !li.check
+        )
+        setList(newList);
+    }
 
+    const onCheckAll = () => {
+        const newList = list.map(
+            li => {
+                if (checkAll) {
+                    return ({ ...li, check: !li.check })
+                } else {
+                    return ({ ...li, check: true })
+                }
+            })
+        checkAll = !checkAll;
+        setList(newList);
+    }
+
+    const onDeleteAll = () => {
+        const newList = [];
+        setList(newList);
     }
 
     useEffect(() => {
@@ -62,7 +80,7 @@ const List = () => {
                         <div>
                             <div className='name'>{item.name}</div>
                             <div className='price'>{item.price}</div>
-                            <button onClick={() => { onDelet(item.id) }}>삭제</button>
+                            <button onClick={() => { onDelete(item.id) }}>삭제</button>
                         </div>
                     </div>
                 ))
