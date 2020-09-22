@@ -1,6 +1,6 @@
-import st from 'styled-components';
+import styled from 'styled-components';
 
-const ListStyle = st.ul`
+const ListStyle = styled.ul`
     display: grid;
     grid-template-columns: repeat(4,1fr);
     grid-gap: 25px;
@@ -8,14 +8,14 @@ const ListStyle = st.ul`
     width: 1000px;
 `
 
-const Item = st.li`
+const Item = styled.li`
 	list-style-type:none;
 	position: relative;
 	border: 1px solid #ddd;
     box-shadow: 5px 5px 15px rgba(0,0,0, .2);
 `
 
-const Button = st.button`
+const Button = styled.button`
     width: 100%;
     text-align: center;
     padding: 10px 0;
@@ -33,17 +33,17 @@ const Button = st.button`
     }
 `
 
-const Checkbox = st.span.attrs(props => ({
+const Checkbox = styled.span.attrs(props => ({
     className: props.className
 }))`
-    & .checked:after{
-            content: "";
-            position: absolute;
-            left: 50%; top: 50%;
-            transform: translate(-50%, -50%);
-            width: 15px;
-            height: 15px;
-            background: rgb(58, 58, 104);
+    &.checked:after{
+        content: "";
+        position: absolute;
+        left: 50%; top: 50%;
+        transform: translate(-50%, -50%);
+        width: 15px;
+        height: 15px;
+        background: rgb(58, 58, 104);
     }
     display: inline-block;
     width: 30px;

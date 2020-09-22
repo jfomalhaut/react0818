@@ -1,7 +1,8 @@
 import React, { useReducer, useEffect, useState } from 'react';
 import Items from '../json/fishes.json';
 import { Button, Checkbox, ListStyle, Item } from '../style/style';
-import { itemReducer, onCheck } from '../reducers/itemReducers';
+import { onCheck, checkAll } from '../reducers/itemReducers';
+import itemReducer from '../reducers/itemReducers';
 
 //item reducer로 버튼들 함수 실행하기, style component로 바꾸기.
 
@@ -9,10 +10,12 @@ const Reducer = () => {
     const [list, dispatch] = useReducer(itemReducer, Items);
 
     const handleCheck = id => {
-        dispatch(onCheck(id))
+        dispatch(onCheck(id));
     };
 
-    const handleCheckAll = () => { };
+    const handleCheckAll = () => {
+        dispatch(checkAll());
+    };
 
     const handleDeleteAll = () => { };
 
@@ -21,7 +24,7 @@ const Reducer = () => {
     const handleDelete = id => { };
 
     useEffect(() => {
-        console.log(list);
+        // console.log(list);
     }, [list])
     return (
         <div className='container'>

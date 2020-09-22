@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import Items from '../json/fishes.json';
-import './List.css';
 
 const listStyle = {
     display: 'grid',
