@@ -1,6 +1,9 @@
 import { createGlobalStyle } from 'styled-components';
 
-export const globalStyle = createGlobalStyle`
+export const GlobalStyle = createGlobalStyle`
+	* {
+		font-size: 30px;
+	}
 	.item {
 		position: relative;
 		border: 1px solid #ddd;

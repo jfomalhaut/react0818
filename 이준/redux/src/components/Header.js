@@ -11,12 +11,12 @@ const Header = () => {
 	}, [location]);
 	return (
 		<ul>
-			<li onClick={() => history.push('/page1')}>Page1</li>
+			{/* <li onClick={() => history.push('/page1')}>Page1</li> */}
 			<li>
-				<Link to="/page2">Page2</Link>
+				<Link to="/list">List</Link>
 			</li>
 			<li>
-				<Link to="/result">Result</Link>
+				<Link to="/cart">Cart</Link>
 			</li>
 		</ul>
 	);
