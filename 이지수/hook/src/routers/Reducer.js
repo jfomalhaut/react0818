@@ -1,53 +1,48 @@
-import React, { useState, useEffect } from 'react';
+import React, { useReducer, useEffect, useState } from 'react';
 import Items from '../json/fishes.json';
-
-const listStyle = {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(4,1fr)',
-    gridGap: '25px',
-    margin: '50px auto',
-    width: '1000px'
-}
+import { Button, Checkbox, ListStyle, Item } from '../style/style';
+import { itemReducer, onCheck } from '../reducers/itemReducers';
 
 //item reducer로 버튼들 함수 실행하기, style component로 바꾸기.
 
 const Reducer = () => {
-    const [list, setList] = useState([]);
+    const [list, dispatch] = useReducer(itemReducer, Items);
 
-    const onCheck = id => { };
+    const handleCheck = id => {
+        dispatch(onCheck(id))
+    };
 
-    const onCheckAll = () => { };
+    const handleCheckAll = () => { };
 
-    const onDeleteAll = () => { };
+    const handleDeleteAll = () => { };
 
-    const onDeleteChecked = () => { };
+    const handleDeleteChecked = () => { };
 
-    const onDelete = id => { };
+    const handleDelete = id => { };
 
     useEffect(() => {
-        setList(Items);
-    }, []);
-
+        console.log(list);
+    }, [list])
     return (
         <div className='container'>
-            <button onClick={onCheckAll}>전체선택</button>
-            <button onClick={onDeleteAll}>전체삭제</button>
-            <button onClick={onDeleteChecked}>선택삭제</button>
+            <Button onClick={handleCheckAll}>전체선택</Button>
+            <Button onClick={handleDeleteAll}>전체삭제</Button>
+            <Button onClick={handleDeleteChecked}>선택삭제</Button>
 
-            <div className='list' style={listStyle}>
+            <ListStyle>
                 {list.map((item, index) => (
-                    <div className='item' key={`item${index}`}>
-                        <span className={`checkbox ${item.check ? 'checked' : ''}`} />
-                        <img src={item.src} style={{ width: '100%' }} onClick={() => { onCheck(item.id) }} />
+                    <Item key={`item${index}`}>
+                        <Checkbox className={`${item.check ? 'checked' : ''}`} />
+                        <img src={item.src} style={{ width: '100%' }} onClick={() => { handleCheck(item.id) }} />
                         <div>
                             <div className='name'>{item.name}</div>
                             <div className='price'>{item.price}</div>
-                            <button onClick={() => { onDelete(item.id) }}>삭제</button>
+                            <Button onClick={() => { handleDelete(item.id) }}>삭제</Button>
                         </div>
-                    </div>
+                    </Item>
                 ))
                 }
-            </div>
+            </ListStyle>
         </div>
     )
 };

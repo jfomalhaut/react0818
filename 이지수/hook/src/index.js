@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-// import Input from './routers/Input';
-import List from './routers/List';
+import Reducer from './routers/Reducer';
 
-ReactDOM.render(<List />, document.getElementById('root'));
+ReactDOM.render(<Reducer />, document.getElementById('root'));

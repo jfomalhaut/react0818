@@ -72,7 +72,6 @@ const List = () => {
     }, [list]);
 
     return (
-
         <div className='container'>
             <button onClick={onCheckAll}>전체선택</button>
             <button onClick={onDeleteAll}>전체삭제</button>
