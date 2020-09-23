@@ -1,37 +1,36 @@
-const ON_CHECK = 'ON_CHECK';
-const CHECK_ALL = 'CHECK_ALL';
-
-export const onCheck = id => ({ type: ON_CHECK, id });
-export const checkAll = () => ({ type: CHECK_ALL });
+import { Check } from '../actions/itemActions';
 
 const itemReducer = (state, { type, id }) => {
     switch (type) {
-        case CHECK_ALL: {
+        case Check.CHECK_ALL: {
             const check = state.some(item => !item.check);
-            return state.map(item => ({...item, check }));
+            const newList = state.map(item => ({ ...item, check }));
+            return newList;
         }
-        case ON_CHECK: {
-            return state.map(item => item.id === id ? ({ ...item, check: !item.check }) : item);
-            // console.log(id);
-            // return {
-            //     ...state.map(item => {
-            //         if (item.id === id) {
-            //             return ({
-            //                 ...item, check: !item.check
-            //             })
-            //         } else {
-            //             return item;
-            //         }
-            //     })
-            // }
+        case Check.ON_CHECK: {
+            const newList = state.map(item =>
+                item.id === id ? ({ ...item, check: !item.check }) : item
+            )
+            return newList;
+        }
+        case Check.ON_DELETE: {
+            const newList = state.filter(item => item.id !== id)
+            console.log(newList);
+            return newList;
+        }
+        case Check.ON_DELETE_ALL: {
+            const newList = [];
+            return newList;
+        }
+        case Check.ON_DELETE_CHECKED: {
+            const newList = state.filter(item => !item.check)
+            return newList;
         }
         default: return state
     }
 }
 
 export default itemReducer;
-
-
 
 // 1. 아무것도 체크가 되지 않은 상황
 // => 모두가 true,
