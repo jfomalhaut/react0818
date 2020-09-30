@@ -32,6 +32,7 @@ const Reducer = () => {
     useEffect(() => {
         // console.log(list);
     }, [list])
+
     return (
         <div className='container'>
             <Button onClick={handleCheckAll}>전체선택</Button>

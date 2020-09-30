@@ -10,6 +10,12 @@ const Header = () => {
             <li>
                 <Link to='/result'>Result</Link>
             </li>
+            <li>
+                <Link to='/list'>List</Link>
+            </li>
+            <li>
+                <Link to='/cart'>Cart</Link>
+            </li>
         </ul>
     )
 }

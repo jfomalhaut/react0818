@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Items from '../jsons/items.json'
 
-
 const nf = new Intl.NumberFormat()
 const CONFIRM_KEY = process.env.CONFIRM_KEY
 
