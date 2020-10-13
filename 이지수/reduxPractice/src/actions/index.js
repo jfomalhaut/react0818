@@ -1,4 +1,4 @@
-import { CartAction } from './cartActions';
-import { ListAction } from './listActions';
+import { ListAction } from './listAction';
+import { CartAction } from './cartAction';
 
-export { CartAction, ListAction };
+export { ListAction, CartAction };

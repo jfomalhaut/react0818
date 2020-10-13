@@ -1,26 +1,25 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
+import { Item, Checkbox, Button } from '../style/style';
 import { CartAction } from '../actions';
-import { Button, Checkbox, Item } from '../css/style';
+import { nf } from '../utils/const';
 
-const nf = Intl.NumberFormat();
-
-const ListItem = ({ handleClick, item, item: { name, price, check, id, src } }) => {
+const ListItem = ({ onCheck, item, item: { id, src, check, price, name } }) => {
     const dispatch = useDispatch();
 
-    const onAdd = () => {
-        dispatch(CartAction.addCart(item))
+    const onClickAdd = () => {
+        dispatch(CartAction.onAdd(item));
     }
 
     return (
         <Item>
-            <Checkbox className={`checkbox ${check ? 'checked' : ''}`} />
-            <img src={src} onClick={() => { handleClick(id) }} />
+            <Checkbox className={check ? 'checked' : ''} />
+            <img src={src} onClick={() => { onCheck(id) }} />
             <div>
                 <p>{name}</p>
                 <p>{nf.format(price)}원</p>
             </div>
-            <Button onClick={onAdd} >담기</Button>
+            <Button onClick={onClickAdd}>담기</Button>
         </Item>
     )
 };

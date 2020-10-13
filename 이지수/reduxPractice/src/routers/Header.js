@@ -3,15 +3,15 @@ import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 const Header = () => {
-    const cart = useSelector(({ cartReducer }) => cartReducer.cart);
+    const cartList = useSelector(({ cartReducer }) => cartReducer.cart);
 
     return (
         <ul>
             <li>
-                <Link to='/list'>List</Link>
+                <Link to="/list">List</Link>
             </li>
             <li>
-                <Link to='/cart'>Cart({cart.length})</Link>
+                <Link to="/cart">Cart({cartList.length})</Link>
             </li>
         </ul>
     )

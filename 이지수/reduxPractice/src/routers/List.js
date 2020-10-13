@@ -1,46 +1,30 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { ListStyle, Button } from '../css/style';
+import { ListStyle, Button } from '../style/style';
 import { ListItem } from '../components';
-import Items from '../json/fishes.json';
-import { CartAction, ListAction } from '../actions';
+import { ListAction, CartAction } from '../actions';
 
 const List = () => {
+    const dispatch = useDispatch();
     const list = useSelector(({ listReducer }) => listReducer.list);
 
-    const dispatch = useDispatch();
-
-    const onAddChecked = () => {
-        const newList = list.filter(item => item.check);
-        dispatch(CartAction.addCart(newList));
-    }
-
-    const handleClick = (id) => {
+    const onCheck = (id) => {
         dispatch(ListAction.onCheck(id));
     }
 
-    const onDeleteAll = () => {
-        dispatch(ListAction.onDeleteAll());
-    }
-
-    const onDeleteChecked = () => {
-        const newList = list.filter(item => !item.check);
-        dispatch(ListAction.onDeleteChecked(newList));
+    const onAddChecked = () => {
+        dispatch(CartAction.onAddChecked(list));
     }
 
     return (
         <>
-            <Button onClick={onDeleteAll}>전체 상품 삭제</Button>
-            <Button onClick={onDeleteChecked}>선택한 상품 삭제</Button>
             <Button onClick={onAddChecked}>선택한 상품 담기</Button>
             <ListStyle>
-                {list.map(item => (
-                    <ListItem key={item.id} item={item} handleClick={handleClick}
-                    />)
-                )}
+                {list.map(item =>
+                    <ListItem key={item.id} item={item} onCheck={onCheck}></ListItem>)}
             </ListStyle>
         </>
-    )
+    );
 };
 
 export default List;

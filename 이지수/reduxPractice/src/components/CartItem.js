@@ -1,28 +1,30 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { Item, Checkbox, Button } from '../css/style';
+import { Item, Checkbox, Button } from '../style/style';
 import { CartAction } from '../actions';
 
-const nf = new Intl.NumberFormat();
-
-const CartItem = ({ item: { name, id, check, src, price } }) => {
+const CartList = ({ item: { name, id, check, price, src } }) => {
     const dispatch = useDispatch();
 
-    const onRemoveCart = (id) => {
-        dispatch(CartAction.removeCart(id));
+    const handleClickRemove = (id) => {
+        dispatch(CartAction.onRemove(id))
+    }
+
+    const handleCheck = (id) => {
+        dispatch(CartAction.onCheck(id))
     }
 
     return (
         <Item>
-            <Checkbox className={`checkbox ${check ? 'checked' : ''}`} />
-            <img src={src} />
+            <Checkbox className={check ? 'checked' : ''} />
+            <img src={src} onClick={() => { handleCheck(id) }} />
             <div>
                 <p>{name}</p>
-                <p>{nf.format(price)}원</p>
+                <p>{price}</p>
             </div>
-            <Button onClick={() => { onRemoveCart(id) }}>삭제</Button>
+            <Button onClick={() => { handleClickRemove(id) }}>삭제하기</Button>
         </Item>
     )
-};
+}
 
-export default CartItem;
+export default CartList;
