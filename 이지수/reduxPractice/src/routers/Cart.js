@@ -12,10 +12,6 @@ const Cart = () => {
         dispatch(CartAction.onMount());
     }, [])
 
-    useEffect(() => {
-        dispatch(CartAction.handleOverlap());
-    }, [cartList])
-
     const handleRemoveButton = () => {
         dispatch(CartAction.onRemoveChecked());
     }

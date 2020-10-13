@@ -1,19 +1,11 @@
 import { CartAction } from '../actions';
-import Items from '../json/fishes.json';
 
 const initialState = {
-    cart: Items
+    cart: []
 };
 
 const cartReducer = (state = initialState, action) => {
     switch (action.type) {
-        case CartAction.HANDLE_OVERLAP: {
-            const newList = Array.from(new Set(state.cart));
-            return {
-                ...state,
-                cart: newList
-            }
-        }
         case CartAction.ON_MOUNT: {
             const newList = state.cart.map(item => (
                 { ...item, check: false }

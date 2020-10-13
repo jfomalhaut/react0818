@@ -1,9 +1,14 @@
+const ON_MOUNT = 'ON_MOUNT';
 const ON_CHECK = "ON_CHECK";
-const onCheck = (id) => ({ type: ON_CHECK, id })
+
+const onMount = () => ({ type: ON_MOUNT });
+const onCheck = (id) => ({ type: ON_CHECK, id });
 
 const ListAction = {
+    ON_MOUNT,
     ON_CHECK,
-    onCheck,
+    onMount,
+    onCheck
 };
 
 export { ListAction };

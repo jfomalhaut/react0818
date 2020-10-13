@@ -7,6 +7,14 @@ const initialState = {
 
 const listReducer = (state = initialState, action) => {
     switch (action.type) {
+        case ListAction.ON_MOUNT: {
+            const newList = state.list.map(item =>
+                ({ ...item, check: false }));
+            return {
+                ...state,
+                list: newList
+            }
+        }
         case ListAction.ON_CHECK: {
             const newList = state.list.map(item =>
                 item.id === action.id
