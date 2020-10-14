@@ -8,20 +8,25 @@ const List = () => {
     const dispatch = useDispatch();
     const list = useSelector(({ listReducer }) => listReducer.list);
 
-    const onCheck = (id) => {
+    const handleCheck = (id) => {
         dispatch(ListAction.onCheck(id));
     }
 
-    const onAddChecked = () => {
-        dispatch(CartAction.onAddChecked(list));
+    const handleAddChecked = () => {
+        const checked = list.filter(item => item.check)
+        dispatch(CartAction.onAddChecked(checked));
+    }
+
+    const handleAdd = () => {
+        dispatch(CartAction.onAdd())
     }
 
     return (
         <>
-            <Button onClick={onAddChecked}>선택한 상품 담기</Button>
+            <Button onClick={handleAddChecked}>선택한 상품 담기</Button>
             <ListStyle>
                 {list.map(item =>
-                    <ListItem key={item.id} item={item} onCheck={onCheck}></ListItem>)}
+                    <ListItem key={item.id} item={item} handleAdd={handleAdd} handleCheck={handleCheck}></ListItem>)}
             </ListStyle>
         </>
     );
