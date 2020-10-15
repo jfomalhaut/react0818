@@ -2,7 +2,7 @@ import { call, put, takeEvery, takeLatest } from 'redux-saga/effects';
 import Axios from 'axios';
 import { AuthAction } from '../actions';
 
-const URL = "http://fomalhaut.shop/api/sessionLogin";
+const URL = "http://localhost:4000/signin";
 // ID : test01
 // PWD : pass1234
 

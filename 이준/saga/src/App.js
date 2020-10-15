@@ -3,15 +3,23 @@ import { useSelector } from 'react-redux';
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
 import { Login, Page1, Page2 } from './routers';
 import { GuardRoute } from './guards';
+import Axios from 'axios';
 
 const App = () => {
 	const logged = useSelector(({ authReducer }) => {
 		return authReducer.logged;
 	});
 
+	const checkVerify = () => {
+		Axios.post(`http://localhost:4000/verify`).then(res => {
+			const { data: { verify } } = res;
+			console.log(verify);
+		});
+	};
+
 	useEffect(() => {
-		console.log(logged);
-	}, [logged]);
+		checkVerify();
+	}, []);
 	
 	return (
 		<BrowserRouter>
