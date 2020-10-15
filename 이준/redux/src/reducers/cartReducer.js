@@ -7,7 +7,13 @@ const initialState = {
 const cartReducer = (state = initialState, action) => {
 	switch(action.type) {
 		case Cart.ADD_CART: {
-			return state;
+			const ids = state.cart.map(item => item.id);
+			const idx = ids.indexOf(action.item.id);
+			const newList = idx === -1 ? state.cart.concat(action.item) : state.cart;
+			return {
+				...state,
+				cart : newList
+			};
 		}
 		case Cart.REMOVE_CART: {
 			return state;
