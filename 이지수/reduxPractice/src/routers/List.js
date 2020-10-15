@@ -26,7 +26,7 @@ const List = () => {
             <Button onClick={handleAddChecked}>선택한 상품 담기</Button>
             <ListStyle>
                 {list.map(item =>
-                    <ListItem key={item.id} item={item} handleAdd={handleAdd} handleCheck={handleCheck}></ListItem>)}
+                    <ListItem key={item.id} item={item} handleAdd={handleAdd} handleCheck={handleCheck} />)}
             </ListStyle>
         </>
     );

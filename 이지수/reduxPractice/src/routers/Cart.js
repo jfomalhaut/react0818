@@ -31,7 +31,7 @@ const Cart = () => {
             <Button onClick={handleCheckAll}>전체 상품 선택</Button>
             <ListStyle>{
                 cartList.map(item =>
-                    <CartItem item={item} key={`cart${item.id}`} ></CartItem>)
+                    <CartItem item={item} key={`cart${item.id}`} />)
             }
             </ListStyle>
         </>
