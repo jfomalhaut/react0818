@@ -1,17 +1,15 @@
 import React from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import { Page, Result, List, Cart } from './routers';
-import { Header } from './components';
+import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
+import { Header, List, Cart } from './routers';
 
 const App = () => {
     return (
         <BrowserRouter>
             <Header />
             <Switch>
-                <Route path='/page' component={Page} />
-                <Route path='/result' component={Result} />
                 <Route path='/list' component={List} />
                 <Route path='/cart' component={Cart} />
+                <Redirect to='/list' />
             </Switch>
         </BrowserRouter>
     )

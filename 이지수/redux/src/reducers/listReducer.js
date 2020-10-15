@@ -3,7 +3,7 @@ import Items from '../json/fishes.json';
 
 const initialData = {
     list: Items,
-    checked: []
+    cart: []
 }
 
 const listReducer = (state = initialData, action) => {
@@ -19,7 +19,7 @@ const listReducer = (state = initialData, action) => {
         case Check.ON_CART: {
             return {
                 ...state,
-                checked: state.list.filter(item =>
+                cart: state.list.filter(item =>
                     item.check)
             }
         }
