@@ -4,7 +4,7 @@ const LOGIN_FAILURE = "LOGIN_FAILURE";
 
 const login = (payload) => ({ type: LOGIN, payload });
 const loginSuccess = (valid) => ({ type: LOGIN_SUCCESS, valid });
-const loginFailure = (error) => ({ type: LOGIN_FAILURE, error });
+const loginFailure = (valid) => ({ type: LOGIN_FAILURE, valid });
 
 const AuthAction = {
     LOGIN,

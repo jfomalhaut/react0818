@@ -18,13 +18,17 @@ const authReducer = (state = initialState, action) => {
             return {
                 ...state,
                 logged: action.valid,
+                failure: 0
             };
         }
         case AuthAction.LOGIN_FAILURE: {
             return {
                 ...state,
-                error: action.error
+                failure: state.failure + 1
             };
+        }
+        default: {
+            return state;
         }
     }
 }
