@@ -7,9 +7,9 @@ const URL = "http://localhost:4000/signin";
 // PWD : pass1234
 
 function* fetchAuthSaga(action) {
-	const { payload } = action;
+	const { payload: { account, password } } = action;
 	try {
-		const { data: { valid, token } } = yield call([Axios, 'post'], URL, payload);
+		const { data: { valid, token } } = yield call([Axios, 'get'], `${URL}?account=${account}&password=${password}`);
 		if (valid) {
 			yield put(AuthAction.loginSuccess(valid));
 		} else {

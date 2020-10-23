@@ -28,6 +28,12 @@ const authReducer = (state = initialState, action) => {
 				failure : state.failure + 1
 			};
 		}
+		case AuthAction.LOGOUT: {
+			return {
+				...state,
+				logged: false
+			};
+		}
 		default: {
 			return state;
 		}
