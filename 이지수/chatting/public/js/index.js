@@ -44,7 +44,7 @@ sendBtn.addEventListener('click', send);
 function send() {
     const msg = message.value;
     message.value = '';
-    socket.emit('message', { nickname: nickname, value, type: 'message', msg })
+    socket.emit('message', { nickname: nickname, type: 'message', msg })
 }
 
 function one(element) {

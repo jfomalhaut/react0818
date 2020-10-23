@@ -16,7 +16,7 @@ io.on('connection', (socket) => {
             type: 'connect',
             nickname
         };
-        io.socket.emit('update', payload);
+        io.sockets.emit('update', payload);
     });
 
     socket.on('message', ({ nickname, type, msg }) => {
