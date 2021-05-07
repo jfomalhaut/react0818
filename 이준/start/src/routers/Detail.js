@@ -1,10 +1,15 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
+import Axios from 'axios';
 
 function Detail({ match: { params: { board_id } } }) {
 
+	const getDetailInfo = async () => {
+		const boardInfo = await Axios
+	};
+
 	useEffect(() => {
-		
+		getDetailInfo();
 	}, [board_id]);
 
 	return (
