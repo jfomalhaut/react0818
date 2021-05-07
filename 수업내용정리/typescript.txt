@@ -1,0 +1,12 @@
+1. yarn init -y
+2. dist, src 폴더 생성
+3. webpack.config.js, src/index.tsx, src/index.html, .gitingore, tsconfig.json
+4. [기존] react react-dom react-router-dom
+5. [기존] webpack webpack-cli webpack-dev-server
+6. [TypeScript]
+	1) @types/react
+	2) @types/react-dom
+	3) @types/webpack
+	4) ts-loader
+	5) typescript
+	6) html-webpack-plugin
