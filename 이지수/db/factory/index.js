@@ -29,10 +29,17 @@ function handleDisconnect(){
 
 handleDisconnect();
 
+//게시판 상세 정보
 module.exports.getBoard = (req, res) => {
-  sql = "SELECT * FROM board ORDER BY board_id DESC";
+  sql = `
+    SELECT b.*, COUNT(c.comment_id) AS count FROM board b
+    LEFT JOIN comment c ON c.board_id = b.board_id
+    GROUP BY b.board_id
+    ORDER BY board_id DESC
+  `;
   conn.query(sql, (err, data)=> {
     if(err){
+      console.log(err)
       res.status(500).send(false);
     }else{
       res.status(200).send(data);
@@ -40,9 +47,10 @@ module.exports.getBoard = (req, res) => {
   });
 }
 
+//게시판 > 코멘트 정보
 module.exports.getDetail = (req,res)=>{
   const {query: {board_id}} = req;
-  sql = "SELECT * FROM comment WHERE board_id = ?";
+  sql = "SELECT * FROM board WHERE board_id = ?";
   conn.query(sql, [board_id], (err,data)=>{
     if(err){
       res.status(500).send(false);
@@ -54,12 +62,24 @@ module.exports.getDetail = (req,res)=>{
 
 module.exports.getComment = (req,res)=>{
   const {query: {board_id}} = req;
-  sql = "SELECT * FROM comment WHERE board_id = ?";
+  sql = "SELECT * FROM comment WHERE board_id = ? ORDER BY comment_id DESC";
   conn.query(sql, [board_id], (err,data)=>{
     if(err){
       res.status(500).send(false);
     }else{
       res.status(200).send(data);
+    }
+  })
+}
+
+module.exports.postComment = (req, res) => {
+  const {body: {board_id, writer, comment_content }} = req;
+  sql = `INSERT INTO comment (board_id, writer, comment_content, datetime) VALUES(?,?,?, now())`
+  conn.query(sql, [board_id, writer, comment_content], (err)=>{
+    if(err){
+      res.status(500).send(false)
+    }else{
+      res.status(200).send(true)
     }
   })
 }

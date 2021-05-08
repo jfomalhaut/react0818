@@ -8,7 +8,7 @@ function Board({history}){
 
   const init = async() => {
     try{
-      const { data } = await axios.get("http://localhost/api/getBoard");
+      const { data } = await axios.get("https://feedbacker.club/api/getBoard");
       console.log(data)
       setList(data)
     } catch{
