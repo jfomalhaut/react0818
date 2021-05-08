@@ -1,45 +1,24 @@
 const express = require("express");
 const dotenv = require("dotenv");
 const mysql = require("mysql");
+const api = require("./api");
+const cors = require("cors");
 
 dotenv.config();
 
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 80;
 const app = express();
 
 let conn;
 let sql;
 
-const info = {
-  host: process.env.DB_HOST,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB_NAME,
-}
+app.use(cors({
+  origin:["http://localhost:3000"],
+  credentials: true
+}))
 
-conn = mysql.createConnection(info);
-
-// function handleDisconnect(){
-//   conn = mysql.createConnection(info);
-//   conn.connect((err,result, fields)=>{
-//     if(err){
-//       console.log("error message:" + err);
-//       setTimeout(handleDisconnect, 2000);
-//     };
-//   });
-
-//   conn.on("error", (err)=>{
-//     console.log("db error" + err);
-//     if(err.conde === "PROTOCOL_CONNECTION_LOST"){
-//       handleDisconnect();
-//     }else{
-//       throw err;
-//     }
-//   })
-// }
-
-// handleDisconnect()
+app.use("/api", api);
 
 app.listen(PORT, ()=>{
-  console.log("START EXPRESS SERVER< PROT NUMBER:" + PORT);
+  console.log("START EXPRESS SERVER< PORT NUMBER:" + PORT);
 })
