@@ -3,5 +3,7 @@ const factory = require("../factory");
 const router = express.Router();
 
 router.get("/getBoard", factory.getBoard);
-router.get("/getDetail", factory.getDetail)
+router.get("/getDetail", factory.getDetail);
+router.get("/getComment", factory.getComment);
+
 module.exports = router;

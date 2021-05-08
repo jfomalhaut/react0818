@@ -3,7 +3,7 @@ import styled from "styled-components";
 import axios from "axios";
 import moment from "moment";
 
-function Board(){
+function Board({history}){
   const [list, setList] = useState([]);
 
   const init = async() => {
@@ -15,6 +15,10 @@ function Board(){
       console.log("failed")
     }
   } 
+
+  const goDetail = id => {
+    history.push('/detail/' + id)
+  }
 
   useEffect(() => {
     init();
@@ -32,7 +36,7 @@ function Board(){
         {list.map(item=>(
           <li key={`BOARD_LIST${item.board_id}`}>
             <span>{item.board_id}</span>
-            <span>{item.title}</span>
+            <span onClick={()=>goDetail(item.board_id)}>{item.title}</span>
             <span>{moment(item.datetime).format('YYYY-MM-DD HH:mm')}</span>
             <span>{item.view}</span>
           </li>

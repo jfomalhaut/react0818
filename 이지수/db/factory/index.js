@@ -42,7 +42,7 @@ module.exports.getBoard = (req, res) => {
 
 module.exports.getDetail = (req,res)=>{
   const {query: {board_id}} = req;
-  sql = "SELECT * FROM board WHERE board_id = ?";
+  sql = "SELECT * FROM comment WHERE board_id = ?";
   conn.query(sql, [board_id], (err,data)=>{
     if(err){
       res.status(500).send(false);
