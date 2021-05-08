@@ -1,6 +1,5 @@
 import axios from "axios";
 import React, { useEffect } from "react";
-import { container } from "webpack";
 
 function Detail({match : { params : { board_id }}}){
 
