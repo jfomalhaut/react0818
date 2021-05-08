@@ -1,10 +1,19 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect } from "react";
 import { container } from "webpack";
 
-function Detail({match:{params:{board_id}}}){
+function Detail({match : { params : { board_id }}}){
+
+  const getDetailInfo = async() => {
+    const boardInfo = await axios
+  }
+
+  useEffect(()=>{
+    getDetailInfo();
+  },[board_id])
+  
   return(
     <Container>
-
     </Container>
   );
 }
